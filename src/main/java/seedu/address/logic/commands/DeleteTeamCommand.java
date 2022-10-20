@@ -8,7 +8,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.team.Team;
 /**
- * Deletes a team from the addressbook.
+ * Deletes a team from the Contacts List.
  */
 public class DeleteTeamCommand extends Command {
     public static final String COMMAND_WORD = "delete_team";

@@ -106,7 +106,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public void setTruthTableFilePath(Path addressBookFilePath) {
+        public void setTruthTableFilePath(Path truthTableFilePath) {
             throw new AssertionError("This method should not be called.");
         }
 

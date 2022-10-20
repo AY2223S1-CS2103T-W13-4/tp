@@ -13,7 +13,7 @@ import seedu.address.model.team.Team;
 import seedu.address.model.team.UniqueTeamList;
 
 /**
- * Wraps all data at the address-book level
+ * Wraps all data at the TruthTable level
  * Duplicates are not allowed (by .isSamePerson comparison)
  */
 public class TruthTable implements ReadOnlyTruthTable {
@@ -38,7 +38,7 @@ public class TruthTable implements ReadOnlyTruthTable {
     }
 
     /**
-     * Creates an AddressBook using the Persons in the {@code toBeCopied}
+     * Creates a TruthTable using the Persons in the {@code toBeCopied}
      */
     public TruthTable(ReadOnlyTruthTable toBeCopied) {
         this();
@@ -56,7 +56,7 @@ public class TruthTable implements ReadOnlyTruthTable {
     }
 
     /**
-     * Resets the existing data of this {@code AddressBook} with {@code newData}.
+     * Resets the existing data of this {@code TruthTable} with {@code newData}.
      */
     public void resetData(ReadOnlyTruthTable newData) {
         requireNonNull(newData);
@@ -69,7 +69,7 @@ public class TruthTable implements ReadOnlyTruthTable {
     //// person-level operations
 
     /**
-     * Returns true if a person with the same identity as {@code person} exists in the address book.
+     * Returns true if a person with the same identity as {@code person} exists in the person list.
      */
     public boolean hasPerson(Person person) {
         requireNonNull(person);
@@ -77,8 +77,8 @@ public class TruthTable implements ReadOnlyTruthTable {
     }
 
     /**
-     * Adds a person to the address book.
-     * The person must not already exist in the address book.
+     * Adds a person to the person list.
+     * The person must not already exist in the person list.
      */
     public void addPerson(Person p) {
         persons.add(p);
@@ -86,8 +86,8 @@ public class TruthTable implements ReadOnlyTruthTable {
 
     /**
      * Replaces the given person {@code target} in the list with {@code editedPerson}.
-     * {@code target} must exist in the address book.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
+     * {@code target} must exist in the person list.
+     * The person identity of {@code editedPerson} must not be the same as another existing person in the person list.
      */
     public void setPerson(Person target, Person editedPerson) {
         requireNonNull(editedPerson);
@@ -95,8 +95,8 @@ public class TruthTable implements ReadOnlyTruthTable {
     }
 
     /**
-     * Removes {@code key} from this {@code AddressBook}.
-     * {@code key} must exist in the address book.
+     * Removes {@code key} from this person list.
+     * {@code key} must exist in the person list.
      */
     public void removePerson(Person key) {
         persons.remove(key);

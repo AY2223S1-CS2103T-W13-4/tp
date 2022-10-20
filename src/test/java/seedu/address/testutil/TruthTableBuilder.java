@@ -4,9 +4,9 @@ import seedu.address.model.TruthTable;
 import seedu.address.model.person.Person;
 
 /**
- * A utility class to help with building Addressbook objects.
+ * A utility class to help with building TruthTable objects.
  * Example usage: <br>
- *     {@code AddressBook ab = new AddressBookBuilder().withPerson("John", "Doe").build();}
+ *     {@code TruthTable ab = new TruthTableBuilder().withPerson("John", "Doe").build();}
  */
 public class TruthTableBuilder {
 
@@ -21,7 +21,7 @@ public class TruthTableBuilder {
     }
 
     /**
-     * Adds a new {@code Person} to the {@code AddressBook} that we are building.
+     * Adds a new {@code Person} to the {@code TruthTable} that we are building.
      */
     public TruthTableBuilder withPerson(Person person) {
         truthTable.addPerson(person);

@@ -86,7 +86,7 @@ public class TruthTableTest {
     }
 
     /**
-     * A stub ReadOnlyAddressBook whose persons list can violate interface constraints.
+     * A stub ReadOnlyTruthTable whose persons list can violate interface constraints.
      */
     private static class TruthTableStub implements ReadOnlyTruthTable {
         private final ObservableList<Person> persons = FXCollections.observableArrayList();

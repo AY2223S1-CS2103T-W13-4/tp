@@ -27,6 +27,6 @@ public interface Storage extends TruthTableStorage, UserPrefsStorage {
     Optional<ReadOnlyTruthTable> readTruthTable() throws DataConversionException, IOException;
 
     @Override
-    void saveTruthTable(ReadOnlyTruthTable addressBook) throws IOException;
+    void saveTruthTable(ReadOnlyTruthTable truthTable) throws IOException;
 
 }

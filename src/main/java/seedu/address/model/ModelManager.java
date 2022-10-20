@@ -16,7 +16,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.team.Team;
 
 /**
- * Represents the in-memory model of the address book data.
+ * Represents the in-memory model of the truth table data.
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
@@ -26,14 +26,14 @@ public class ModelManager implements Model {
     private final FilteredList<Person> filteredPersons;
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given truthTable and userPrefs.
      */
-    public ModelManager(ReadOnlyTruthTable addressBook, ReadOnlyUserPrefs userPrefs) {
-        requireAllNonNull(addressBook, userPrefs);
+    public ModelManager(ReadOnlyTruthTable truthTable, ReadOnlyUserPrefs userPrefs) {
+        requireAllNonNull(truthTable, userPrefs);
 
-        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with address book: " + truthTable + " and user prefs " + userPrefs);
 
-        this.truthTable = new TruthTable(addressBook);
+        this.truthTable = new TruthTable(truthTable);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.truthTable.getPersonList());
     }
@@ -72,12 +72,12 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void setTruthTableFilePath(Path addressBookFilePath) {
-        requireNonNull(addressBookFilePath);
-        userPrefs.setTruthTableFilePath(addressBookFilePath);
+    public void setTruthTableFilePath(Path truthTableFilePath) {
+        requireNonNull(truthTableFilePath);
+        userPrefs.setTruthTableFilePath(truthTableFilePath);
     }
 
-    //=========== AddressBook ================================================================================
+    //=========== TruthTable ================================================================================
 
     @Override
     public void setTruthTable(ReadOnlyTruthTable truthTable) {
@@ -147,7 +147,7 @@ public class ModelManager implements Model {
 
     /**
      * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
-     * {@code versionedAddressBook}
+     * {@code versionedTruthTable}
      */
     @Override
     public ObservableList<Person> getFilteredPersonList() {

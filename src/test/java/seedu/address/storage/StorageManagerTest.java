@@ -51,8 +51,8 @@ public class StorageManagerTest {
     public void truthTableReadSave() throws Exception {
         /*
          * Note: This is an integration test that verifies the StorageManager is properly wired to the
-         * {@link JsonAddressBookStorage} class.
-         * More extensive testing of UserPref saving/reading is done in {@link JsonAddressBookStorageTest} class.
+         * {@link JsonTruthTableStorage} class.
+         * More extensive testing of UserPref saving/reading is done in {@link JsonTruthTableStorageTest} class.
          */
         TruthTable original = getTypicalTruthTable();
         storageManager.saveTruthTable(original);

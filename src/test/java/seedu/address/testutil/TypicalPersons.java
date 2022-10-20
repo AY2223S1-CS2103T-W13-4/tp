@@ -61,7 +61,7 @@ public class TypicalPersons {
     private TypicalPersons() {} // prevents instantiation
 
     /**
-     * Returns an {@code AddressBook} with all the typical persons.
+     * Returns a {@code TruthTable} with all the typical persons.
      */
     public static TruthTable getTypicalTruthTable() {
         TruthTable ab = new TruthTable();

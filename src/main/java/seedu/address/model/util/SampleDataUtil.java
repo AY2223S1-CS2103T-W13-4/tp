@@ -16,7 +16,7 @@ import seedu.address.model.tag.Tag;
 import seedu.address.model.team.Team;
 
 /**
- * Contains utility methods for populating {@code AddressBook} with sample data.
+ * Contains utility methods for populating {@code TruthTable} with sample data.
  */
 public class SampleDataUtil {
     public static Person[] getSamplePersons() {

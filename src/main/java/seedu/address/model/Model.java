@@ -51,7 +51,7 @@ public interface Model {
      */
     void setTruthTable(ReadOnlyTruthTable truthTable);
 
-    /** Returns the AddressBook */
+    /** Returns the TruthTable */
     ReadOnlyTruthTable getTruthTable();
 
     /**

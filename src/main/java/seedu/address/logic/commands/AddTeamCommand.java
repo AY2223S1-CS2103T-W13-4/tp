@@ -8,7 +8,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.team.Team;
 /**
- * Adds a new team to the address book.
+ * Adds a new team.
  */
 public class AddTeamCommand extends Command {
     public static final String COMMAND_WORD = "add_team";

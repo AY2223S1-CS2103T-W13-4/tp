@@ -15,7 +15,7 @@ import seedu.address.commons.util.JsonUtil;
 import seedu.address.model.ReadOnlyTruthTable;
 
 /**
- * A class to access AddressBook data stored as a json file on the hard disk.
+ * A class to access TruthTable data stored as a json file on the hard disk.
  */
 public class JsonTruthTableStorage implements TruthTableStorage {
 
@@ -45,14 +45,14 @@ public class JsonTruthTableStorage implements TruthTableStorage {
     public Optional<ReadOnlyTruthTable> readTruthTable(Path filePath) throws DataConversionException {
         requireNonNull(filePath);
 
-        Optional<JsonSerializableTruthTable> jsonAddressBook = JsonUtil.readJsonFile(
+        Optional<JsonSerializableTruthTable> jsonTruthTable = JsonUtil.readJsonFile(
                 filePath, JsonSerializableTruthTable.class);
-        if (!jsonAddressBook.isPresent()) {
+        if (!jsonTruthTable.isPresent()) {
             return Optional.empty();
         }
 
         try {
-            return Optional.of(jsonAddressBook.get().toModelType());
+            return Optional.of(jsonTruthTable.get().toModelType());
         } catch (IllegalValueException ive) {
             logger.info("Illegal values found in " + filePath + ": " + ive.getMessage());
             throw new DataConversionException(ive);
@@ -60,8 +60,8 @@ public class JsonTruthTableStorage implements TruthTableStorage {
     }
 
     @Override
-    public void saveTruthTable(ReadOnlyTruthTable addressBook) throws IOException {
-        saveTruthTable(addressBook, filePath);
+    public void saveTruthTable(ReadOnlyTruthTable truthTable) throws IOException {
+        saveTruthTable(truthTable, filePath);
     }
 
     /**
@@ -69,12 +69,12 @@ public class JsonTruthTableStorage implements TruthTableStorage {
      *
      * @param filePath location of the data. Cannot be null.
      */
-    public void saveTruthTable(ReadOnlyTruthTable addressBook, Path filePath) throws IOException {
-        requireNonNull(addressBook);
+    public void saveTruthTable(ReadOnlyTruthTable truthTable, Path filePath) throws IOException {
+        requireNonNull(truthTable);
         requireNonNull(filePath);
 
         FileUtil.createIfMissing(filePath);
-        JsonUtil.saveJsonFile(new JsonSerializableTruthTable(addressBook), filePath);
+        JsonUtil.saveJsonFile(new JsonSerializableTruthTable(truthTable), filePath);
     }
 
 }
