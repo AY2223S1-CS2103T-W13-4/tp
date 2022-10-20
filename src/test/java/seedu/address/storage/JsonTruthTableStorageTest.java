@@ -52,17 +52,17 @@ public class JsonTruthTableStorageTest {
 
     @Test
     public void readTruthTable_invalidPersonTruthTable_throwDataConversionException() {
-        assertThrows(DataConversionException.class, () -> readTruthTable("invalidPersonTruthTable.json"));
+        assertThrows(DataConversionException.class, () -> readTruthTable("invalidPersonAddressBook.json"));
     }
 
     @Test
     public void readTruthTable_invalidAndValidPersonTruthTable_throwDataConversionException() {
-        assertThrows(DataConversionException.class, () -> readTruthTable("invalidAndValidPersonTruthTable.json"));
+        assertThrows(DataConversionException.class, () -> readTruthTable("invalidAndValidPersonAddressBook.json"));
     }
 
     @Test
     public void readAndSaveTruthTable_allInOrder_success() throws Exception {
-        Path filePath = testFolder.resolve("TempTruthTable.json");
+        Path filePath = testFolder.resolve("TempAddressBook.json");
         TruthTable original = getTypicalTruthTable();
         JsonTruthTableStorage jsonTruthTableStorage = new JsonTruthTableStorage(filePath);
 
