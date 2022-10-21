@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -36,17 +37,20 @@ public class SetTeamCommand extends Command {
         requireNonNull(model);
         List<Team> teamList = model.getTeamList();
         Team currentTeam = model.getTeam();
-        int teamIndex = teamList.indexOf(targetTeam);
+        List<Team> filteredListWithTargetTeam = teamList.stream()
+                .filter(targetTeam::isSameTeam).collect(Collectors.toList());
 
-        if (teamIndex == -1) {
+        if (filteredListWithTargetTeam.size() == 0) {
             throw new CommandException(MESSAGE_TEAM_NOT_EXISTS);
         }
 
-        if (currentTeam.equals(targetTeam)) {
+        Team targetTeamInTeamList = filteredListWithTargetTeam.get(0);
+
+        if (currentTeam.equals(targetTeamInTeamList)) {
             throw new CommandException(MESSAGE_TEAM_ALREADY_SET);
         }
-        model.setTeam(teamList.get(teamIndex));
-        return new CommandResult(String.format(MESSAGE_SET_TEAM_SUCCESS, targetTeam));
+        model.setTeam(targetTeamInTeamList);
+        return new CommandResult(String.format(MESSAGE_SET_TEAM_SUCCESS, targetTeamInTeamList));
     }
 
     @Override

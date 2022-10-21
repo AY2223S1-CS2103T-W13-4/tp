@@ -25,10 +25,22 @@ public class Team {
     private final UniquePersonList teamMembers = new UniquePersonList();
     private final TaskList taskList = new TaskList();
     private final UniqueLinkList links = new UniqueLinkList();
+
+    /**
+     * Constructor with of an empty team only with its name.
+     *
+     * @param teamName A valid team name.
+     */
+    public Team(String teamName) {
+        requireNonNull(teamName);
+        checkArgument(isValidTeamName(teamName), MESSAGE_CONSTRAINTS);
+        this.teamName = teamName;
+    }
+
     /**
      * Constructs a {@code Team}.
      *
-     * @param teamName A valid team name.
+     * @param teamName    A valid team name.
      * @param teamMembers A list of persons to be added as members.
      */
     public Team(String teamName, List<Person> teamMembers) {
@@ -40,9 +52,10 @@ public class Team {
 
     /**
      * Constructs a {@code Team}
-     * @param teamName A valid team name
+     *
+     * @param teamName    A valid team name
      * @param teamMembers A list of persons to be added as members
-     * @param tasks A list of tasks for the team to do
+     * @param tasks       A list of tasks for the team to do
      */
     public Team(String teamName, List<Person> teamMembers, List<Task> tasks) {
         requireNonNull(teamName);
@@ -54,10 +67,11 @@ public class Team {
 
     /**
      * Constructs a {@code Team}
-     * @param teamName A valid team name
+     *
+     * @param teamName    A valid team name
      * @param teamMembers A list of persons to be added as members
-     * @param tasks A list of tasks for the team to do
-     * @param links A list of links that the team should keep track of
+     * @param tasks       A list of tasks for the team to do
+     * @param links       A list of links that the team should keep track of
      */
     public Team(String teamName, List<Person> teamMembers, List<Task> tasks, List<Link> links) {
         requireNonNull(teamName);
@@ -129,7 +143,8 @@ public class Team {
 
     /**
      * Sets a specified team member as the assignee for the task.
-     * @param task The specified task to be assigned
+     *
+     * @param task   The specified task to be assigned
      * @param person The specified member that task is assigned to
      */
     public void assignTask(Task task, Person person) {
@@ -153,6 +168,7 @@ public class Team {
     public void deleteLink(Link link) {
         links.remove(link);
     }
+
     public ObservableList<Link> getLinkList() {
         return links.asUnmodifiableObservableList();
     }
@@ -187,7 +203,10 @@ public class Team {
         }
 
         Team otherTeam = (Team) other;
-        return otherTeam.getTeamName().equals(getTeamName());
+        return otherTeam.getTeamName().equals(getTeamName())
+                && otherTeam.getTeamMembers().equals(this.getTeamMembers())
+                && otherTeam.getTaskList().equals(this.getTaskList())
+                && otherTeam.getLinkList().equals(this.getLinkList());
     }
 
     @Override
@@ -197,6 +216,7 @@ public class Team {
 
     /**
      * Returns a string representation of the task list.
+     *
      * @return string representation of task list.
      */
     public String getTasksAsString() {
@@ -205,6 +225,7 @@ public class Team {
 
     /**
      * Returns a map representing the number of tasks assigned to each person.
+     *
      * @return Map of person to number of tasks assigned
      */
     public Map<Person, Integer> getTasksPerPerson() {

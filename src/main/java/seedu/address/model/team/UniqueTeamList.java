@@ -14,7 +14,7 @@ import seedu.address.model.team.exceptions.TeamNotFoundException;
 /**
  * A list of teams that enforces uniqueness between its elements and does not allow nulls.
  * A team is considered unique solely based on the name of the team.
- *
+ * <p>
  * Supports a minimal set of list operations.
  **/
 
@@ -22,6 +22,10 @@ import seedu.address.model.team.exceptions.TeamNotFoundException;
 public class UniqueTeamList implements Iterable<Team> {
 
     private final ObservableList<Team> internalTeams = FXCollections.observableArrayList();
+
+    public Team get(int index) {
+        return internalTeams.get(index);
+    }
 
     /**
      * Returns true if the list contains a team with the same name as the given argument.

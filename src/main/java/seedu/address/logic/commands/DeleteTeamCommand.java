@@ -3,10 +3,12 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.team.Team;
+
 /**
  * Deletes a team from the addressbook.
  */
@@ -27,25 +29,30 @@ public class DeleteTeamCommand extends Command {
     public DeleteTeamCommand(Team targetTeam) {
         this.targetTeam = targetTeam;
     }
+
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Team> teamList = model.getTeamList();
         Team currentTeam = model.getTeam();
-        int teamIndex = teamList.indexOf(targetTeam);
-        if (teamIndex == -1) {
+
+        List<Team> filteredListWithTargetTeam = teamList.stream()
+                .filter(targetTeam::isSameTeam).collect(Collectors.toList());
+
+        if (filteredListWithTargetTeam.size() == 0) {
             throw new CommandException(MESSAGE_TEAM_NOT_EXISTS);
         }
 
         if (teamList.size() == 1) {
             throw new CommandException(MESSAGE_AT_LEAST_ONE_TEAM);
         }
+        Team targetTeamInTeamList = filteredListWithTargetTeam.get(0);
+        model.deleteTeam(targetTeamInTeamList);
 
-        model.deleteTeam(teamList.get(teamIndex));
-        if (currentTeam.equals(targetTeam)) {
-            model.setTeam(model.getTeamList().get(0));
+        if (currentTeam.equals(targetTeamInTeamList)) {
+            model.setTeam(model.getFirstDisplayedTeam());
         }
-        return new CommandResult(String.format(MESSAGE_DELETE_TEAM_SUCCESS, targetTeam));
+        return new CommandResult(String.format(MESSAGE_DELETE_TEAM_SUCCESS, targetTeamInTeamList));
     }
 
     @Override

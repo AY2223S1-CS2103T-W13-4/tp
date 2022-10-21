@@ -147,6 +147,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public Team getFirstDisplayedTeam() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void setTeam(Team teamToSet) {
             throw new AssertionError("This method should not be called.");
         }

@@ -1,6 +1,6 @@
 package seedu.address.logic.parser;
 
-import java.util.ArrayList;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import seedu.address.logic.commands.DeleteTeamCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -18,6 +18,13 @@ public class DeleteTeamCommandParser implements Parser<DeleteTeamCommand> {
      */
     @Override
     public DeleteTeamCommand parse(String args) throws ParseException {
-        return new DeleteTeamCommand(new Team(args.trim(), new ArrayList<>()));
+        String trimmedArgs = args.trim();
+        if (trimmedArgs.isEmpty()) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteTeamCommand.MESSAGE_USAGE));
+        }
+        Team dummyTargetTeam = new Team(trimmedArgs);
+
+        return new DeleteTeamCommand(dummyTargetTeam);
     }
 }

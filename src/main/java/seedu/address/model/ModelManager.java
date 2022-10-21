@@ -122,6 +122,12 @@ public class ModelManager implements Model {
     public Team getTeam() {
         return addressBook.getTeam();
     }
+
+    @Override
+    public Team getFirstDisplayedTeam() {
+        return addressBook.getFirstDisplayedTeam();
+    }
+
     @Override
     public ObjectProperty<Team> getTeamAsProperty() {
         return addressBook.getTeamAsProperty();

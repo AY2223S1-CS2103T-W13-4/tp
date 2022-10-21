@@ -23,13 +23,11 @@ public class AddressBook implements ReadOnlyAddressBook {
     private final UniqueTeamList teams;
     private ObjectProperty<Team> currentTeam = new SimpleObjectProperty<>();
 
-    /*
-     * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
+    /* The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
      * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
      *
      * Note that non-static init blocks are not recommended to use. There are other ways to avoid duplication
-     *   among constructors.
-     */
+     *   among constructors. */
     {
         persons = new UniquePersonList();
         teams = new UniqueTeamList();
@@ -119,6 +117,11 @@ public class AddressBook implements ReadOnlyAddressBook {
     public Team getTeam() {
         return currentTeam.getValue();
     }
+
+    public Team getFirstDisplayedTeam() {
+        return teams.get(0);
+    }
+
     public ObjectProperty<Team> getTeamAsProperty() {
         return currentTeam;
     }
@@ -129,6 +132,10 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     public void addTeam(Team teamToAdd) {
         teams.add(teamToAdd);
+    }
+
+    public boolean containsTeam(Team teamToCheck) {
+        return teams.contains(teamToCheck);
     }
 
     public void deleteTeam(Team teamToDelete) {
@@ -142,6 +149,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void setTeams(List<Team> teams) {
         this.teams.setTeams(teams);
     }
+
     //// link related operations
     public boolean hasLink(Link link) {
         return getTeam().hasLink(link);
@@ -187,9 +195,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-            || (other instanceof AddressBook // instanceof handles nulls
-            && persons.equals(((AddressBook) other).persons)
-            );
+                || (other instanceof AddressBook // instanceof handles nulls
+                && persons.equals(((AddressBook) other).persons));
     }
 
     @Override

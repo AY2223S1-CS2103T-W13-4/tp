@@ -68,7 +68,7 @@ class JsonSerializableAddressBook {
                 addressBook.deleteTeam(defaultTeam);
                 addressBook.setTeam(team);
             }
-            if (addressBook.getTeamList().contains(team)) {
+            if (addressBook.containsTeam(team)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_TEAMS);
             }
 
