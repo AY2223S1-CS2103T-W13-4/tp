@@ -105,6 +105,6 @@ public class JsonTruthTableStorageTest {
 
     @Test
     public void saveTruthTable_nullFilePath_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> saveTruthTable(new TruthTable(), null));
+        assertThrows(NullPointerException.class, () -> saveTruthTable(TruthTable.createNewTruthTable(), null));
     }
 }

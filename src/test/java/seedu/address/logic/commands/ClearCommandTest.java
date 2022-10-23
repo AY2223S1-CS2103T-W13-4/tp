@@ -24,7 +24,7 @@ public class ClearCommandTest {
     public void execute_nonEmptyTruthTable_success() {
         Model model = new ModelManager(getTypicalTruthTable(), new UserPrefs());
         Model expectedModel = new ModelManager(getTypicalTruthTable(), new UserPrefs());
-        expectedModel.setTruthTable(new TruthTable());
+        expectedModel.setTruthTable(TruthTable.createNewTruthTable());
 
         assertCommandSuccess(new ClearCommand(), model, ClearCommand.MESSAGE_SUCCESS, expectedModel);
     }

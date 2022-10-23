@@ -1,6 +1,5 @@
 package seedu.address.model.util;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -13,7 +12,6 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
-import seedu.address.model.team.Team;
 
 /**
  * Contains utility methods for populating {@code TruthTable} with sample data.
@@ -43,14 +41,11 @@ public class SampleDataUtil {
     }
 
     public static ReadOnlyTruthTable getSampleTruthTable() {
-        TruthTable sampleAb = new TruthTable();
+        TruthTable sampleTt = TruthTable.createNewTruthTable();
         for (Person samplePerson : getSamplePersons()) {
-            sampleAb.addPerson(samplePerson);
+            sampleTt.addPerson(samplePerson);
         }
-        Team defaultTeam = new Team("default", new ArrayList<>(), new ArrayList<>());
-        sampleAb.addTeam(defaultTeam);
-        sampleAb.setTeam(defaultTeam);
-        return sampleAb;
+        return sampleTt;
     }
 
     /**

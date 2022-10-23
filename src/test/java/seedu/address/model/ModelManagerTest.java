@@ -26,7 +26,7 @@ public class ModelManagerTest {
     public void constructor() {
         assertEquals(new UserPrefs(), modelManager.getUserPrefs());
         assertEquals(new GuiSettings(), modelManager.getGuiSettings());
-        assertEquals(new TruthTable(), new TruthTable(modelManager.getTruthTable()));
+        assertEquals(TruthTable.createNewTruthTable(), new TruthTable(modelManager.getTruthTable()));
     }
 
     @Test
@@ -96,7 +96,7 @@ public class ModelManagerTest {
     @Test
     public void equals() {
         TruthTable truthTable = new TruthTableBuilder().withPerson(ALICE).withPerson(BENSON).build();
-        TruthTable differentTruthTable = new TruthTable();
+        TruthTable differentTruthTable = TruthTable.createNewTruthTable();
         UserPrefs userPrefs = new UserPrefs();
 
         // same values -> returns true

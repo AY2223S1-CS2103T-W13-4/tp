@@ -13,7 +13,7 @@ public class TruthTableBuilder {
     private TruthTable truthTable;
 
     public TruthTableBuilder() {
-        truthTable = new TruthTable();
+        truthTable = TruthTable.createNewTruthTable();
     }
 
     public TruthTableBuilder(TruthTable truthTable) {

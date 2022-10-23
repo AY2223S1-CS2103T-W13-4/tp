@@ -9,6 +9,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
+import seedu.address.model.team.Link;
 import seedu.address.model.team.Team;
 import seedu.address.model.team.UniqueTeamList;
 
@@ -34,7 +35,7 @@ public class TruthTable implements ReadOnlyTruthTable {
         teams = new UniqueTeamList();
     }
 
-    public TruthTable() {
+    private TruthTable() {
     }
 
     /**
@@ -43,6 +44,17 @@ public class TruthTable implements ReadOnlyTruthTable {
     public TruthTable(ReadOnlyTruthTable toBeCopied) {
         this();
         resetData(toBeCopied);
+    }
+
+    /**
+     * Initialises a new Addressbook with a default team.
+     */
+    public static TruthTable createNewTruthTable() {
+        Team defaultTeam = Team.createDefaultTeam();
+        TruthTable tt = new TruthTable();
+        tt.addTeam(defaultTeam);
+        tt.setTeam(defaultTeam);
+        return tt;
     }
 
     //// list overwrite operations
@@ -107,6 +119,7 @@ public class TruthTable implements ReadOnlyTruthTable {
     public Team getTeam() {
         return currentTeam.getValue();
     }
+
     public ObjectProperty<Team> getTeamAsProperty() {
         return currentTeam;
     }
@@ -131,6 +144,25 @@ public class TruthTable implements ReadOnlyTruthTable {
         this.teams.setTeams(teams);
     }
 
+    //// link related operations
+    public boolean hasLink(Link link) {
+        return getTeam().hasLink(link);
+    }
+
+    public void addLink(Link link) {
+        getTeam().addLink(link);
+    }
+
+    public void setLink(Link target, Link editedLink) {
+        requireNonNull(editedLink);
+        getTeam().setLink(target, editedLink);
+    }
+
+    public void deleteLink(Link link) {
+        getTeam().deleteLink(link);
+    }
+
+
     //// util methods
 
     @Override
@@ -150,12 +182,16 @@ public class TruthTable implements ReadOnlyTruthTable {
         return teams.asUnmodifiableObservableList();
     }
 
+    public ObservableList<Link> getLinkList() {
+        return getTeam().getLinkList();
+    }
+
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-            || (other instanceof TruthTable // instanceof handles nulls
-            && persons.equals(((TruthTable) other).persons)
-            );
+                || (other instanceof TruthTable // instanceof handles nulls
+                && persons.equals(((TruthTable) other).persons)
+        );
     }
 
     @Override

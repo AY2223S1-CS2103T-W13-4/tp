@@ -51,7 +51,7 @@ class JsonSerializableTruthTable {
      * @throws IllegalValueException if there were any data constraints violated.
      */
     public TruthTable toModelType() throws IllegalValueException {
-        TruthTable truthTable = new TruthTable();
+        TruthTable truthTable = TruthTable.createNewTruthTable();
         for (JsonAdaptedPerson jsonAdaptedPerson : persons) {
             Person person = jsonAdaptedPerson.toModelType();
             if (truthTable.hasPerson(person)) {
@@ -63,21 +63,17 @@ class JsonSerializableTruthTable {
         int counter = 0;
         for (JsonAdaptedTeam jsonAdaptedTeam : teams) {
             Team team = jsonAdaptedTeam.toModelType();
+            if (counter == 0) {
+                Team defaultTeam = Team.createDefaultTeam();
+                truthTable.deleteTeam(defaultTeam);
+                truthTable.setTeam(team);
+            }
             if (truthTable.getTeamList().contains(team)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_TEAMS);
             }
-            truthTable.addTeam(team);
 
-            if (counter == 0) {
-                truthTable.setTeam(team);
-            }
+            truthTable.addTeam(team);
             counter++;
-        }
-
-        if (counter == 0) {
-            Team team = new Team("default", new ArrayList<>(), new ArrayList<>());
-            truthTable.addTeam(team);
-            truthTable.setTeam(team);
         }
         return truthTable;
     }

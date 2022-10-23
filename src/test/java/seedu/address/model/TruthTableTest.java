@@ -26,7 +26,7 @@ import seedu.address.testutil.PersonBuilder;
 
 public class TruthTableTest {
 
-    private final TruthTable truthTable = new TruthTable();
+    private final TruthTable truthTable = TruthTable.createNewTruthTable();
 
     @Test
     public void constructor() {
