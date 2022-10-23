@@ -122,6 +122,7 @@ public class ModelManager implements Model {
     public Team getTeam() {
         return truthTable.getTeam();
     }
+
     @Override
     public ObjectProperty<Team> getTeamAsProperty() {
         return truthTable.getTeamAsProperty();
@@ -188,6 +189,16 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<Person> getFilteredPersonList() {
         return filteredPersons;
+    }
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * {@code versionedTruthTable} based on the specified predicate.
+     */
+    @Override
+    public ObservableList<Person> getFilteredPersonList(Predicate<Person> predicate) {
+        requireNonNull(predicate);
+        return filteredPersons.filtered(predicate);
     }
 
     @Override

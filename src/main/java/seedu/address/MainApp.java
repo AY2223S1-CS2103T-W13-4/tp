@@ -83,10 +83,10 @@ public class MainApp extends Application {
             }
             initialData = truthTableOptional.orElseGet(SampleDataUtil::getSampleTruthTable);
         } catch (DataConversionException e) {
-            logger.warning("Data file not in the correct format. Will be starting with an empty AddressBook");
+            logger.warning("Data file not in the correct format. Will be starting with an empty TruthTable");
             initialData = TruthTable.createNewTruthTable();
         } catch (IOException e) {
-            logger.warning("Problem while reading from the file. Will be starting with an empty AddressBook");
+            logger.warning("Problem while reading from the file. Will be starting with an empty TruthTable");
             initialData = TruthTable.createNewTruthTable();
         }
 

@@ -19,47 +19,31 @@ public interface Model {
 
     Predicate<Link> PREDICATE_SHOW_ALL_LINKS = unused -> true;
 
-    /**
-     * Replaces user prefs data with the data in {@code userPrefs}.
-     */
+    /** Replaces user prefs data with the data in {@code userPrefs}. */
     void setUserPrefs(ReadOnlyUserPrefs userPrefs);
 
-    /**
-     * Returns the user prefs.
-     */
+    /** Returns the user prefs. */
     ReadOnlyUserPrefs getUserPrefs();
 
-    /**
-     * Returns the user prefs' GUI settings.
-     */
+    /** Returns the user prefs' GUI settings. */
     GuiSettings getGuiSettings();
 
-    /**
-     * Sets the user prefs' GUI settings.
-     */
+    /** Sets the user prefs' GUI settings. */
     void setGuiSettings(GuiSettings guiSettings);
 
-    /**
-     * Returns the user prefs' TruthTable file path.
-     */
+    /** Returns the user prefs' TruthTable file path. */
     Path getTruthTableFilePath();
 
-    /**
-     * Sets the user prefs' TruthTable file path.
-     */
+    /** Sets the user prefs' TruthTable file path. */
     void setTruthTableFilePath(Path truthTableFilePath);
 
-    /**
-     * Replaces TruthTable data with the data in {@code truthTable}.
-     */
+    /** Replaces TruthTable data with the data in {@code truthTable}. */
     void setTruthTable(ReadOnlyTruthTable truthTable);
 
     /** Returns the TruthTable */
     ReadOnlyTruthTable getTruthTable();
 
-    /**
-     * Returns true if a person with the same identity as {@code person} exists in the TruthTable.
-     */
+    /** Returns true if a person with the same identity as {@code person} exists in the TruthTable. */
     boolean hasPerson(Person person);
 
     /**
@@ -99,8 +83,11 @@ public interface Model {
     /** Returns an unmodifiable view of the filtered person list */
     ObservableList<Person> getFilteredPersonList();
 
+    ObservableList<Person> getFilteredPersonList(Predicate<Person> pred);
+
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
