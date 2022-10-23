@@ -23,19 +23,9 @@ public class TruthTable implements ReadOnlyTruthTable {
     private final UniqueTeamList teams;
     private ObjectProperty<Team> currentTeam = new SimpleObjectProperty<>();
 
-    /*
-     * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
-     * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
-     *
-     * Note that non-static init blocks are not recommended to use. There are other ways to avoid duplication
-     *   among constructors.
-     */
-    {
+    private TruthTable() {
         persons = new UniquePersonList();
         teams = new UniqueTeamList();
-    }
-
-    private TruthTable() {
     }
 
     /**
@@ -47,7 +37,7 @@ public class TruthTable implements ReadOnlyTruthTable {
     }
 
     /**
-     * Initialises a new Addressbook with a default team.
+     * Initialises a new TruthTable with a default team.
      */
     public static TruthTable createNewTruthTable() {
         Team defaultTeam = Team.createDefaultTeam();
@@ -190,8 +180,7 @@ public class TruthTable implements ReadOnlyTruthTable {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof TruthTable // instanceof handles nulls
-                && persons.equals(((TruthTable) other).persons)
-        );
+                && persons.equals(((TruthTable) other).persons));
     }
 
     @Override
