@@ -19,7 +19,7 @@ public class ClearCommand extends Command {
     public static final String ALIAS = "c";
     public static final String FULL_COMMAND = COMMAND_WORD;
 
-    public static final String MESSAGE_SUCCESS = "Address book has been cleared!";
+    public static final String MESSAGE_SUCCESS = "TruthTable has been cleared!";
 
     @CommandLine.Option(names = {FLAG_HELP_STR, FLAG_HELP_STR_LONG}, usageHelp = true,
             description = FLAG_HELP_DESCRIPTION)
