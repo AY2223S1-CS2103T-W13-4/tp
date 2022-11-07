@@ -13,11 +13,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/devanshshah1309.png" width="200px">
 
-[homepage](https://www.linkedin.com/in/devansh-shah-305a59201/)
-
-[github](https://github.com/devanshshah1309)
-
-[portfolio](team/devanshshah1309.md)
+[[homepage](https://www.linkedin.com/in/devansh-shah-305a59201/)] | [[github](https://github.com/devanshshah1309)] | [[portfolio](team/devanshshah1309.md)]
 
 * Role: Developer
 * Responsibilities: In charge of the UI Component.
@@ -26,11 +22,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/marcuspang.png" width="200px">
 
-[homepage](https://www.linkedin.com/in/marcus-pang-yu-yang/)
-
-[github](http://github.com/marcuspang)
-
-[portfolio](team/marcuspang.md)
+[[homepage](https://www.linkedin.com/in/marcus-pang-yu-yang/)] | [[github](http://github.com/marcuspang)] | [[portfolio](team/marcuspang.md)]
 
 * Role: Developer
 * Responsibilities: In charge of the Parser component.
@@ -39,9 +31,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/ling-ui.png" width="200px">
 
-[github](http://github.com/ling-ui)
-
-[portfolio](team/ling-ui.md)
+[[github](http://github.com/ling-ui)] | [[portfolio](team/ling-ui.md)]
 
 * Role: Developer
 * Responsibilities: In charge of CI/CD.
@@ -51,11 +41,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/changjy44.png" width="200px">
 
-[homepage](https://www.linkedin.com/in/chang-jing-yan-079928146/)
-
-[github](http://github.com/changjy44)
-
-[portfolio](team/changjy44.md)
+[[homepage](https://www.linkedin.com/in/chang-jing-yan-079928146/)] | [[github](http://github.com/changjy44)] | [[portfolio](team/changjy44.md)]
 
 * Role: Developer
 * Responsibilities: In charge of testing.
@@ -65,7 +51,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/mjgui.png" width="200px">
 
-[[github](http://github.com/mjgui)]
+[[github](http://github.com/mjgui)] |
 [[portfolio](team/mjgui.md)]
 
 * Role: Developer
